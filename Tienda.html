@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Tienda TechGear</title>
+</head>
+<body class="bg-gray-100">
+    <div class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl font-bold">Tienda TechGear</h1>
+        </div>
+    </div>
+
+    <main class="container mx-auto py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="productos-container">
+            <!-- Productos se cargarán dinámicamente con JavaScript -->
+        </div>
+        <div class="mt-8 text-center">
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h2 class="text-2xl font-bold mb-4">Carrito de Compras</h2>
+                <div id="carrito-container" class="mb-4">
+                    <!-- Productos del carrito se mostrarán aquí -->
+                </div>
+                <div class="text-right">
+                    <p class="text-xl font-semibold">Total: <span id="total-carrito">0</span>€</p>
+                    <button id="btn-comprar" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+                        Completar Compra
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-200 text-center py-4">
+        <p>© 2024 TechGear. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const productos = [
+            {
+                categoria: 'Portátiles',
+                items: [
+                    { nombre: 'MacBook Pro', precio: 1599, imagen: '/api/placeholder/300/200' },
+                    { nombre: 'Dell XPS', precio: 1299, imagen: '/api/placeholder/300/200' },
+                    { nombre: 'Lenovo ThinkPad', precio: 1099, imagen: '/api/placeholder/300/200' }
+                ]
+            },
+            {
+                categoria: 'Computadoras de Escritorio',
+                items: [
+                    { nombre: 'iMac', precio: 1399, imagen: '/api/placeholder/300/200' },
+                    { nombre: 'Dell Precision', precio: 1799, imagen: '/api/placeholder/300/200' },
+                    { nombre: 'HP EliteDesk', precio: 1249, imagen: '/api/placeholder/300/200' }
+                ]
+            },
+            {
+                categoria: 'Componentes',
+                items: [
+                    { nombre: 'Procesador Intel Core i7', precio: 349, imagen: '/api/placeholder/300/200' },
+                    { nombre: 'Tarjeta Gráfica NVIDIA RTX 4060', precio: 399, imagen: '/api/placeholder/300/200' },
+                    { nombre: 'Memoria RAM 32GB DDR5', precio: 189, imagen: '/api/placeholder/300/200' }
+                ]
+            }
+        ];
+
+        const productosContainer = document.getElementById('productos-container');
+        const carritoContainer = document.getElementById('carrito-container');
+        const totalCarritoSpan = document.getElementById('total-carrito');
+        const btnComprar = document.getElementById('btn-comprar');
+        let carrito = [];
+
+        function renderizarProductos() {
+            productosContainer.innerHTML = '';
+            productos.forEach(categoria => {
+                categoria.items.forEach(producto => {
+                    const productoDiv = document.createElement('div');
+                    productoDiv.classList.add('bg-white', 'shadow-lg', 'rounded-lg', 'p-4', 'text-center');
+                    productoDiv.innerHTML = `
+                        <img src="${producto.imagen}" alt="${producto.nombre}" class="w-full h-48 object-cover mb-4">
+                        <h3 class="text-lg font-semibold">${producto.nombre}</h3>
+                        <p class="text-blue-600 font-bold">${producto.precio}€</p>
+                        <button onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio})" 
+                                class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                            Añadir al Carrito
+                        </button>
+                    `;
+                    productosContainer.appendChild(productoDiv);
+                });
+            });
+        }
+
+        function agregarAlCarrito(nombre, precio) {
+            carrito.push({ nombre, precio });
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            carritoContainer.innerHTML = '';
+            const total = carrito.reduce((sum, item) => sum + item.precio, 0);
+            
+            carrito.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('flex', 'justify-between', 'mb-2');
+                itemDiv.innerHTML = `
+                    <span>${item.nombre}</span>
+                    <span>${item.precio}€</span>
+                    <button onclick="eliminarDelCarrito(${index})" 
+                            class="text-red-500 hover:text-red-700">
+                        Eliminar
+                    </button>
+                `;
+                carritoContainer.appendChild(itemDiv);
+            });
+
+            totalCarritoSpan.textContent = total.toFixed(2);
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        }
+
+        btnComprar.addEventListener('click', () => {
+            if (carrito.length === 0) {
+                alert('El carrito está vacío');
+                return;
+            }
+            alert('Compra realizada con éxito');
+            carrito = [];
+            actualizarCarrito();
+        });
+
+        renderizarProductos();
+    </script>
+</body>
+</html>

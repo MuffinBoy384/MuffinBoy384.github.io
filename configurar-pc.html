@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Configurador de PC - TechGear</title>
+</head>
+<body class="bg-gray-100">
+    <div class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl font-bold">Configura tu PC</h1>
+        </div>
+    </div>
+
+    <main class="container mx-auto py-12">
+        <form id="pc-configurator" class="bg-white shadow-lg rounded-lg p-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Procesador -->
+                <div class="form-group">
+                    <label class="block text-lg font-semibold mb-4">Procesador</label>
+                    <select class="w-full p-2 border rounded" required>
+                        <option value="">Selecciona un Procesador</option>
+                        <option value="intel-i5">Intel Core i5-13600K</option>
+                        <option value="intel-i7">Intel Core i7-14700K</option>
+                        <option value="amd-ryzen5">AMD Ryzen 5 7600X</option>
+                        <option value="amd-ryzen7">AMD Ryzen 7 7700X</option>
+                    </select>
+                </div>
+
+                <!-- Tarjeta Gráfica -->
+                <div class="form-group">
+                    <label class="block text-lg font-semibold mb-4">Tarjeta Gráfica</label>
+                    <select class="w-full p-2 border rounded" required>
+                        <option value="">Selecciona una Tarjeta Gráfica</option>
+                        <option value="nvidia-3060">NVIDIA GeForce RTX 3060</option>
+                        <option value="nvidia-4060">NVIDIA GeForce RTX 4060</option>
+                        <option value="amd-6700">AMD Radeon RX 6700</option>
+                        <option value="amd-7600">AMD Radeon RX 7600</option>
+                    </select>
+                </div>
+
+                <!-- Memoria RAM -->
+                <div class="form-group">
+                    <label class="block text-lg font-semibold mb-4">Memoria RAM</label>
+                    <select class="w-full p-2 border rounded" required>
+                        <option value="">Selecciona Memoria RAM</option>
+                        <option value="16gb-ddr5">16GB DDR5 4800MHz</option>
+                        <option value="32gb-ddr5">32GB DDR5 5600MHz</option>
+                        <option value="64gb-ddr5">64GB DDR5 6000MHz</option>
+                    </select>
+                </div>
+
+                <!-- Almacenamiento -->
+                <div class="form-group">
+                    <label class="block text-lg font-semibold mb-4">Almacenamiento</label>
+                    <select class="w-full p-2 border rounded" required>
+                        <option value="">Selecciona Almacenamiento</option>
+                        <option value="500gb-nvme">SSD 500GB NVMe</option>
+                        <option value="1tb-nvme">SSD 1TB NVMe</option>
+                        <option value="2tb-nvme">SSD 2TB NVMe</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button type="submit" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
+                    Calcular Precio
+                </button>
+            </div>
+        </form>
+
+        <div id="resultado" class="mt-8 bg-white shadow-lg rounded-lg p-8 hidden">
+            <h2 class="text-2xl font-bold mb-4">Resumen de la Configuración</h2>
+            <div id="detalles-configuracion"></div>
+            <div class="mt-4 text-right">
+                <p class="text-xl font-semibold">Precio Total: <span id="precio-total">0</span>€</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const precios = {
+            procesadores: {
+                'intel-i5': 250,
+                'intel-i7': 400,
+                'amd-ryzen5': 220,
+                'amd-ryzen7': 350
+            },
+            graficas: {
+                'nvidia-3060': 300,
+                'nvidia-4060': 450,
+                'amd-6700': 280,
+                'amd-7600': 350
+            },
+            memorias: {
+                '16gb-ddr5': 100,
+                '32gb-ddr5': 200,
+                '64gb-ddr5': 400
+            },
+            almacenamientos: {
+                '500gb-nvme': 80,
+                '1tb-nvme': 150,
+                '2tb-nvme': 250
+            }
+        };
+
+        document.getElementById('pc-configurator').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const procesador = document.querySelector('select:nth-child(1)').value;
+            const grafica = document.querySelector('select:nth-child(2)').value;
+            const memoria = document.querySelector('select:nth-child(3)').value;
+            const almacenamiento = document.querySelector('select:nth-child(4)').value;
+
+            const precioTotal = precios.procesadores[procesador] + 
+                                precios.graficas[grafica] + 
+                                precios.memorias[memoria] + 
+                                precios.almacenamientos[almacenamiento];
+
+            const resultadoDiv = document.getElementById('resultado');
+            const detallesConfiguracion = document.getElementById('detalles-configuracion');
+            const precioTotalSpan = document.getElementById('precio-total');
+
+            detallesConfiguracion.innerHTML = `
+                <p>Procesador: ${document.querySelector('select:nth-child(1) option:checked').text}</p>
+                <p>Tarjeta Gráfica: ${document.querySelector('select:nth-child(2) option:checked').text}</p>
+                <p>Memoria RAM: ${document.querySelector('select:nth-child(3) option:checked').text}</p>
+                <p>Almacenamiento: ${document.querySelector('select:nth-child(4) option:checked').text}</p>
+            `;
+
+            precioTotalSpan.textContent = precioTotal;
+            resultadoDiv.classList.remove('hidden');
+        });
+    </script>
+
+    <footer class="bg-gray-200 text-center py-4 mt-8">
+        <p>© 2024 TechGear. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
