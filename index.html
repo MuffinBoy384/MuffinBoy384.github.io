@@ -7,56 +7,106 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 text-gray-800">
+    <!-- Encabezado -->
     <header class="bg-blue-600 text-white py-4">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold">TechGear</div>
+            <div class="text-2xl font-bold flex items-center">
+                <img src="./logo.png" alt="TechGear" class="h-10 mr-2">
+            </div>
             <nav>
                 <ul class="flex space-x-6">
-
-    <li><a href="certificados.html" class="hover:text-blue-200">Certificados</a></li>
-    <li><a href="comunicacion.html" class="hover:text-blue-200">Comunicación</a></li>
-    <li><a href="direccion_control_mejora.html" class="hover:text-blue-200">Dirección y Control</a></li>
-    <li><a href="Finanzas_y_Contabilidad.html" class="hover:text-blue-200">Finanzas</a></li>
-    <li><a href="Planeacion_y_organizacion.html" class="hover:text-blue-200">Planeación</a></li>
-    <li><a href="Producción_y_Operaciones.html" class="hover:text-blue-200">Producción</a></li>
-    <li><a href="Recursos_Humanos.html" class="hover:text-blue-200">Recursos Humanos</a></li>
-    <li><a href="ventas.html" class="hover:text-blue-200">Ventas</a></li>
-
+                    <li><a href="certificados.html" class="hover:text-blue-200">Certificados</a></li>
+                    <li><a href="comunicacion.html" class="hover:text-blue-200">Comunicación</a></li>
+                    <li><a href="direccion_control_mejora.html" class="hover:text-blue-200">Dirección y Control</a></li>
+                    <li><a href="Finanzas_y_Contabilidad.html" class="hover:text-blue-200">Finanzas</a></li>
+                    <li><a href="Planeacion_y_organizacion.html" class="hover:text-blue-200">Planeación</a></li>
+                    <li><a href="Producción_y_Operaciones.html" class="hover:text-blue-200">Producción</a></li>
+                    <li><a href="Recursos_Humanos.html" class="hover:text-blue-200">Recursos Humanos</a></li>
+                    <li><a href="ventas.html" class="hover:text-blue-200">Ventas</a></li>
                     <li><a href="nosotros.html" class="hover:text-blue-200">Nosotros</a></li>
                     <li><a href="Blog.html" class="hover:text-blue-200">Blog</a></li>
                     <li><a href="producto.html" class="hover:text-blue-200">Productos</a></li>
                     <li><a href="Tienda.html" class="hover:text-blue-200">Tiendas</a></li>
                     <li><a href="configurar-pc.html" class="hover:text-blue-200">Configurar PC</a></li>
-               
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="bg-cover bg-center py-32" style="background-image: url('https://example.com/construction-image.jpg')">
-            <div class="container mx-auto text-white text-center">
-                <h1 class="text-4xl font-bold mb-4">TechGear</h1>
-                <p class="text-xl mb-8">Tecnología que potencia tu mundo</p>
-                <a href="productos.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">Comprar Ahora</a>
+    <!-- Sección Hero -->
+    <section id="inicio" class="bg-cover bg-center py-32" style="background-image: url('https://example.com/construction-image.jpg')">
+        <div class="container mx-auto text-black text-center">
+            <h1 class="text-4xl font-bold mb-4">Bienvenidos a TechGear</h1>
+            <p class="text-xl mb-8">Tecnología que potencia tu mundo</p>
+            <a href="#productos" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">Explorar Productos</a>
+        </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <main class="container mx-auto py-8">
+        <!-- Sección Planeación Estratégica -->
+        <section id="planeacion" class="mb-16">
+            <h2 class="text-3xl font-bold text-blue-600 mb-6">Planeación Estratégica</h2>
+            <div class="space-y-8">
+                <!-- Misión -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800">Misión</h3>
+                    <p>Proveer tecnología innovadora y soluciones accesibles para mejorar la vida de nuestros clientes, potenciando su productividad y conectividad en un mundo digital.</p>
+                </div>
+
+                <!-- Visión -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800">Visión</h3>
+                    <p>Ser la empresa líder en tecnología personalizada, reconocida por la calidad de nuestros productos, innovación constante y compromiso con el cliente.</p>
+
+		    <p>Expandirnos a otro servicios relacionados como venta de software.</p>
+                </div>
+
+                <!-- Giro -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800">Giro</h3>
+                    <p>Comercialización de productos tecnológicos y soluciones integrales en hardware y software.</p>
+                </div>
+
+                <!-- Situación Legal -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800">Situación Legal</h3>
+                    <p>TechGear es una empresa constituida como Sociedad Anónima de Capital Variable (S.A. de C.V.), registrada en México bajo la legislación vigente.</p>
+                </div>
+
+                <!-- Mercado Objetivo -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800">Mercado Objetivo</h3>
+                    <p>Nuestro mercado objetivo incluye profesionistas, empresas, instituciones educativas y entusiastas de la tecnología que buscan productos confiables, de calidad y accesibles.</p>
+                </div>
+
+                <!-- Ubicación -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800">Ubicación</h3>
+                    <p>Oficinas principales ubicadas en Sendero del Mirador 36, Milenio III, 76060 Santiago de Querétaro, Qro.</p>
+                </div>
+
+                <!-- Organigrama -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800">Organigrama</h3>
+                    <img src="./organigrama.png" alt="Organigrama de TechGear" class="mx-auto">
+                </div>
             </div>
+        </section>
+
+        <!-- Sección Productos -->
+        <section id="productos" class="mb-16">
+            <h2 class="text-3xl font-bold text-blue-600 mb-4">Productos Destacados</h2>
+            <p>Próximamente...</p>
         </section>
     </main>
 
+    <!-- Pie de página -->
     <footer class="bg-blue-800 text-white py-8">
-        <div class="container mx-auto flex justify-between items-center">
-            <div>
-                <p>&copy; 2024 TechGear. Todos los derechos reservados.</p>
-            </div>
-            <div class="flex space-x-4">
-                <a href="https://www.facebook.com" target="_blank" class="hover:text-blue-300">Facebook</a>
-                <a href="https://www.twitter.com" target="_blank" class="hover:text-blue-300">Twitter</a>
-                <a href="https://www.instagram.com" target="_blank" class="hover:text-blue-300">Instagram</a>
-                <a href="https://www.youtube.com" target="_blank" class="hover:text-blue-300">YouTube</a>
-            </div>
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 TechGear. Todos los derechos reservados.</p>
+            <p class="mt-4 text-gray-400 text-sm">Esta página es un ejercicio didáctico para la asignatura de <strong>TALLER DE ADMINISTRACIÓN PARA LA CARRERA DE ISC</strong>, por lo que no tiene fines comerciales ni operativos, solo académicos.</p>
         </div>
     </footer>
 </body>
 </html>
-
-```
